@@ -20,6 +20,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import java.util.ArrayList;
 
 import theticks.s2t.actions.IAction;
+import theticks.s2t.charts.LandingText;
 import theticks.s2t.parser.LanguageParser;
 
 @SuppressLint("SetJavaScriptEnabled")
@@ -44,6 +45,7 @@ public class SpeakCopy extends AppCompatActivity {
         charts = new ChartsAdapter(this);
         ListView charts = (ListView) findViewById(R.id.charts);
         charts.setAdapter(this.charts);
+        this.charts.append(new LandingText());
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new SpeakAfterButton(this));
