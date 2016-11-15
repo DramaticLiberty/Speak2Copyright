@@ -55,8 +55,8 @@ public class SpeakCopy extends AppCompatActivity {
         languageParser = new LanguageParser(this);
     }
 
-    public void append() {
-        this.charts.notifyDataSetChanged();
+    public void append(IChart chart) {
+        this.charts.append(chart);
     }
 
     @Override
