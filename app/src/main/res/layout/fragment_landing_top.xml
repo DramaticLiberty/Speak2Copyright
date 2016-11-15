@@ -3,17 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
+    <ImageView
         android:id="@+id/big_c"
-        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_centerInParent="true"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:textColor="@color/colorBlueLight"
         android:textSize="80dp"
-        android:text="C"
+        android:src="@drawable/copyright"
         />
 
     <TextView
@@ -22,7 +23,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="16dp"
         android:textSize="16sp"
-        android:textColor="@color/colorWhite"
+        android:textColor="@color/colorTextLight"
         android:layout_centerInParent="true"
         android:text="@string/landing_text" />
 
