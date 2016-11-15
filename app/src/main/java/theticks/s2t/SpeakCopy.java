@@ -19,6 +19,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import java.util.ArrayList;
 
 import theticks.s2t.actions.IAction;
+import theticks.s2t.charts.LandingSuggestions;
 import theticks.s2t.charts.SimpleTextChart;
 import theticks.s2t.parser.LanguageParser;
 
@@ -45,7 +46,7 @@ public class SpeakCopy extends AppCompatActivity {
         ListView charts = (ListView) findViewById(R.id.charts);
         charts.setAdapter(this.charts);
         append(new SimpleTextChart(R.layout.fragment_landing_top));
-        append(new SimpleTextChart(R.layout.fragment_landing_suggestions));
+        append(new LandingSuggestions(this));
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new SpeakAfterButton(this));
@@ -61,6 +62,12 @@ public class SpeakCopy extends AppCompatActivity {
         this.charts.append(chart);
     }
 
+    public void processQuery(String query) {
+        IAction action = languageParser.parse(query);
+        IChart chart = action.execute(databaseAccess);
+        charts.append(chart);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -69,13 +76,10 @@ public class SpeakCopy extends AppCompatActivity {
             case REQ_CODE_SPEECH_INPUT: {
                 if (resultCode == RESULT_OK && null != data) {
                     ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                    IAction action = languageParser.parse(result.get(0));
-                    IChart chart = action.execute(databaseAccess);
-                    charts.append(chart);
+                    processQuery(result.get(0));
                 }
                 break;
             }
-
         }
     }
 
