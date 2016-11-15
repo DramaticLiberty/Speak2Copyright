@@ -6,7 +6,7 @@
         <item name="colorPrimary">@color/colorBlueLight</item>
         <item name="colorPrimaryDark">@color/colorBlueDark</item>
         <item name="colorAccent">@color/colorComplementary</item>
-    </style>
+    </style>k
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -15,7 +15,7 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
     
     <style name="AppTheme.ToolBatTitle">
-        <item name="android:textSize">30dp</item>
+        <item name="android:textSize">24dp</item>
         <item name="android:textColor">@color/colorComplementary</item>
         <item name="android:gravity">center_horizontal</item>
     </style>
@@ -24,7 +24,17 @@
         <item name="android:textSize">30dp</item>
         <item name="android:textColor">@color/colorComplementary</item>
         <item name="android:gravity">center_horizontal</item>
+    </style>
 
+    <style name="AppTheme.Suggestions">
+        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorTextDark</item>
+        <item name="android:background">@color/colorWhite</item>
+        <item name="android:elevation">4dp</item>
     </style>
 
 </resources>

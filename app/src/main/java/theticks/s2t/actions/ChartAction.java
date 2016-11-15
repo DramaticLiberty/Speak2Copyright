@@ -3,7 +3,7 @@ package theticks.s2t.actions;
 import theticks.s2t.Constants;
 import theticks.s2t.DatabaseAccess;
 import theticks.s2t.IChart;
-import theticks.s2t.charts.BubbleChart;
+import theticks.s2t.charts.BarChart;
 import theticks.s2t.charts.DefaultChart;
 import theticks.s2t.charts.MapChart;
 import theticks.s2t.charts.PieChart;
@@ -26,7 +26,7 @@ public class ChartAction implements IAction {
             case Constants.GROUPED_YEAR:
                 String sql_year = "SELECT year as year, count(*) as number_of_studies FROM " + Constants.TABLE_STUDIES +
                         " WHERE year != '' AND ABS(year) > 2000 GROUP BY year;";
-                return new BubbleChart(databaseAccess.executeSQL(sql_year));
+                return new BarChart(databaseAccess.executeSQL(sql_year));
         }
         return new DefaultChart();
     }

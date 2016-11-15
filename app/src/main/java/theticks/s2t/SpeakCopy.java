@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -20,6 +19,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import java.util.ArrayList;
 
 import theticks.s2t.actions.IAction;
+import theticks.s2t.charts.SimpleTextChart;
 import theticks.s2t.parser.LanguageParser;
 
 @SuppressLint("SetJavaScriptEnabled")
@@ -44,6 +44,8 @@ public class SpeakCopy extends AppCompatActivity {
         charts = new ChartsAdapter(this);
         ListView charts = (ListView) findViewById(R.id.charts);
         charts.setAdapter(this.charts);
+        append(new SimpleTextChart(R.layout.fragment_landing_top));
+        append(new SimpleTextChart(R.layout.fragment_landing_suggestions));
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new SpeakAfterButton(this));

@@ -3,8 +3,12 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
 
-    <color name="colorBlueLight">#0003FD</color>
-    <color name="colorBlueDark">#0003BF</color>
-    <color name="colorBackground">#000333</color>
-    <color name="colorComplementary">#FFC533</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlueLight">#4DB6AC</color>
+    <color name="colorBlueDark">#3D988E</color>
+    <color name="colorBackground">#F9F9F9</color>
+    <color name="colorComplementary">@color/colorWhite</color>
+
+    <color name="colorTextDark">#333333</color>
+    <color name="colorTextLight">#666666</color>
 </resources>

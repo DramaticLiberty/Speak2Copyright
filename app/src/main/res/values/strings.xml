@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Speak to Copyright</string>
+    <string name="landing_text">
+        "Speak to see visualizations based on copyright evidence to help create picture of "
+        "the issues here ..."
+    </string>
 
 
     <string name="large_text">
