@@ -18,25 +18,22 @@ import theticks.s2t.R;
  * Created by rpadurariu on 15.11.2016.
  */
 
-public class PieChart  extends SimpleText{
+public class PieChart  extends SimpleTextChart {
 
     private PieChartView chart;
     private List<ChartPoint> studies;
 
+    public PieChart() {
+        this.layout_id = R.layout.fragment_pie_chart;
+    }
+
     @Override
-    public View createView(LayoutInflater inflater, ViewGroup parent) {
-        View v = inflater.inflate(R.layout.fragment_pie_chart, parent, false);
+    protected View viewSetup(View v) {
         studies = databaseAccess.getNumberOfStudiesByCountry();
 
         chart = (PieChartView) v.findViewById(R.id.pie_chart);
         chart.setPieChartData(this.getData());
         return v;
-    }
-
-    @Override
-    public View convertView(View convertView, ViewGroup parent) {
-        // TODO convert this
-        return convertView;
     }
 
     public PieChartData getData() {
