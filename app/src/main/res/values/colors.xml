@@ -7,4 +7,5 @@
     <color name="colorBlueDark">#0003BF</color>
     <color name="colorBackground">#000333</color>
     <color name="colorComplementary">#FFC533</color>
+    <color name="colorWhite">#FFFFFF</color>
 </resources>
