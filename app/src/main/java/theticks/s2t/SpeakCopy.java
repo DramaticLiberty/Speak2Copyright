@@ -37,6 +37,7 @@ public class SpeakCopy extends AppCompatActivity {
 
     public void append() {
         this.charts.append2();
+        this.charts.notifyDataSetChanged();
     }
 
     @Override

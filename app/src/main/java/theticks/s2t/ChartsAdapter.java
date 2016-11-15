@@ -7,10 +7,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import theticks.s2t.charts.MapChart;
-import theticks.s2t.charts.SimpleText;
+import theticks.s2t.charts.SimpleTextChart;
 
 /**
  * Created by Mihai Balint on 11/15/16.
@@ -19,10 +21,12 @@ import theticks.s2t.charts.SimpleText;
 public class ChartsAdapter extends BaseAdapter {
 
     private List<IChart> charts;
+    private Map<Class, Integer> chartTypes;
     private Context context;
     private DatabaseAccess databaseAccess;
 
     public ChartsAdapter(Context context) {
+        this.chartTypes = new HashMap<Class, Integer>();
         this.charts = new ArrayList<>();
         this.context = context;
 
@@ -33,12 +37,14 @@ public class ChartsAdapter extends BaseAdapter {
     public void append(IChart chart) {
         chart.setDatabaseAccess(databaseAccess);
         charts.add(chart);
+        if (!chartTypes.containsKey(chart.getClass()))
+            chartTypes.put(chart.getClass(), chartTypes.size());
         notifyDataSetChanged();
     }
 
     public void append2() {
         append(new MapChart());
-        append(new SimpleText());
+        append(new SimpleTextChart());
     }
 
     @Override
@@ -64,5 +70,15 @@ public class ChartsAdapter extends BaseAdapter {
             return c.createView(inflater, parent);
         }
         return c.convertView(convertView, parent);
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return chartTypes.size();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return chartTypes.get(charts.get(position).getClass());
     }
 }

@@ -8,11 +8,12 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:background="#8020B080"
     tools:context="theticks.s2t.SpeakCopy" tools:showIn="@layout/activity_speak_copy">
-
-    <ListView
-        android:id="@+id/charts"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#8020B080"
-        />
+        <ListView
+            android:id="@+id/charts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#8020B080"
+            android:orientation="vertical"
+            android:scrollbars="horizontal"
+            />
 </android.support.v4.widget.NestedScrollView>
