@@ -25,7 +25,7 @@ public class SimpleTextChart implements IChart {
 
     @Override
     public final View createView(LayoutInflater inflater, ViewGroup parent) {
-        return viewSetup(inflater.inflate(layout_id, parent, false));
+        return viewSetup(inflater.inflate(layout_id, null));
     }
 
     @Override

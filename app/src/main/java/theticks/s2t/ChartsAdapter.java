@@ -1,10 +1,12 @@
 package theticks.s2t;
 
 import android.content.Context;
+import android.database.DataSetObservable;
+import android.database.DataSetObserver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.ListAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,14 +21,16 @@ import theticks.s2t.charts.SimpleTextChart;
  * Created by Mihai Balint on 11/15/16.
  */
 
-public class ChartsAdapter extends BaseAdapter {
+public class ChartsAdapter implements ListAdapter {
 
     private List<IChart> charts;
     private Map<Class, Integer> chartTypes;
     private Context context;
     private DatabaseAccess databaseAccess;
+    private final DataSetObservable mDataSetObservable;
 
     public ChartsAdapter(Context context) {
+        this. mDataSetObservable = new DataSetObservable();
         this.chartTypes = new HashMap<Class, Integer>();
         this.charts = new ArrayList<>();
         this.context = context;
@@ -65,7 +69,15 @@ public class ChartsAdapter extends BaseAdapter {
     }
 
     @Override
+    public boolean hasStableIds() {
+        return true;
+    }
+
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        int type = getItemViewType(position);
+        System.out.println("\ngetView " + position + "/" +getCount() + " " + convertView + " type = " + type+"\n");
+
         IChart c = (IChart) getItem(position);
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(context);
@@ -80,7 +92,39 @@ public class ChartsAdapter extends BaseAdapter {
     }
 
     @Override
+    public boolean isEmpty() {
+        return false;
+    }
+
+    @Override
     public int getItemViewType(int position) {
         return chartTypes.get(charts.get(position).getClass());
     }
+
+    @Override
+    public boolean areAllItemsEnabled() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled(int position) {
+        return true;
+    }
+
+
+    public void registerDataSetObserver(DataSetObserver observer) {
+        mDataSetObservable.registerObserver(observer);
+    }
+
+    public void unregisterDataSetObserver(DataSetObserver observer) {
+        mDataSetObservable.unregisterObserver(observer);
+    }
+
+    public void notifyDataSetChanged() {
+        mDataSetObservable.notifyChanged();
+    }
+    public void notifyDataSetInvalidated() {
+        mDataSetObservable.notifyInvalidated();
+    }
+
 }
