@@ -8,8 +8,8 @@ import android.webkit.WebView;
 import java.util.ArrayList;
 import java.util.List;
 
+import theticks.s2t.ChartPoint;
 import theticks.s2t.R;
-import theticks.s2t.StudiesByCountry;
 
 /**
  * Created by Mihai Balint on 11/15/16.
@@ -17,7 +17,7 @@ import theticks.s2t.StudiesByCountry;
 
 public class MapChart extends SimpleTextChart {
 
-    private List<StudiesByCountry> studiesByCountry;
+    private List<ChartPoint> studiesByCountry;
 
     public MapChart() {
         this.layout_id = R.layout.fragment_map_chart;
@@ -39,7 +39,7 @@ public class MapChart extends SimpleTextChart {
 
     private void filterCountries() {
         for (int i = 0; i < studiesByCountry.size(); i++) {
-            String name = studiesByCountry.get(i).getCountryName();
+            String name = studiesByCountry.get(i).getName();
             if (name.matches(".*\\d+.*")) {
                 studiesByCountry.remove(i);
                 i--;
@@ -58,12 +58,12 @@ public class MapChart extends SimpleTextChart {
 
         @JavascriptInterface
         public String getCountry(int i) {
-            return studiesByCountry.get(i).getCountryName();
+            return studiesByCountry.get(i).getName();
         }
 
         @JavascriptInterface
         public int getStudies(int i) {
-            return studiesByCountry.get(i).getNumberOfStudies();
+            return studiesByCountry.get(i).getValue();
         }
     }
 }

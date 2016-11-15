@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import theticks.s2t.charts.MapChart;
+import theticks.s2t.charts.PieChart;
 import theticks.s2t.charts.SimpleTextChart;
 
 /**
@@ -44,6 +45,7 @@ public class ChartsAdapter extends BaseAdapter {
 
     public void append2() {
         append(new MapChart());
+        append(new PieChart());
         append(new SimpleTextChart());
     }
 

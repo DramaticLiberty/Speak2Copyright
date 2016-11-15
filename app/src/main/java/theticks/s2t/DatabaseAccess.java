@@ -88,18 +88,18 @@ public class DatabaseAccess {
         return list;
     }
 
-    public List<StudiesByCountry> getNumberOfStudiesByCountry() {
+    public List<ChartPoint> getNumberOfStudiesByCountry() {
         if (database == null) {
-            return new ArrayList<StudiesByCountry>();
+            return new ArrayList<ChartPoint>();
         }
 
-        List<StudiesByCountry> studiesByCountry = new ArrayList<>();
+        List<ChartPoint> studiesByCountry = new ArrayList<>();
         String selectQuery =  "SELECT name as country, count(*) as nr FROM " + this.TABLE_STUDIES_TO_COUNTRIES +
                 " JOIN " + this.TABLE_COUNTRIES + " c ON country_id=c.id GROUP BY country_id;";
         Cursor cursor = database.rawQuery(selectQuery, null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()) {
-            StudiesByCountry studiesCountry = new StudiesByCountry(cursor.getString(cursor.getColumnIndex("country")),
+            ChartPoint studiesCountry = new ChartPoint(cursor.getString(cursor.getColumnIndex("country")),
                     cursor.getInt(cursor.getColumnIndex("nr")));
             studiesByCountry.add(studiesCountry);
             cursor.moveToNext();
