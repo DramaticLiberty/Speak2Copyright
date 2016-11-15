@@ -48,9 +48,9 @@ public class ChartsAdapter implements ListAdapter {
     }
 
     public void append2() {
-        append(new MapChart());
-        append(new PieChart());
-        append(new SimpleTextChart());
+//        append(new MapChart());
+//        append(new PieChart());
+//        append(new SimpleTextChart());
     }
 
     @Override

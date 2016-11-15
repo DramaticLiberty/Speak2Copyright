@@ -31,4 +31,13 @@ public class Constants {
     public static final int BUBBLE_CHART = 2;
 
     public static final int SEARCH_DEPTH = 4;
+
+    // Table Names
+    public static final String TABLE_STUDIES = "studies";
+    public static final String TABLE_AUTHORS = "authors";
+    public static final String TABLE_INDUSTRIES = "industries";
+    public static final String TABLE_COUNTRIES = "countries";
+    public static final String TABLE_STUDIES_TO_AUTHORS = "studies_to_authors";
+    public static final String TABLE_STUDIES_TO_INDUSTRIES = "studies_to_industries";
+    public static final String TABLE_STUDIES_TO_COUNTRIES = "studies_to_countries";
 }

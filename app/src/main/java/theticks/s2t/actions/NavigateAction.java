@@ -1,5 +1,8 @@
 package theticks.s2t.actions;
 
+import theticks.s2t.DatabaseAccess;
+import theticks.s2t.IChart;
+
 public class NavigateAction implements IAction{
     private String url;
 
@@ -8,7 +11,7 @@ public class NavigateAction implements IAction{
     }
 
     @Override
-    public void execute() {
-
+    public IChart execute(DatabaseAccess databaseAccess) {
+        return null;
     }
 }

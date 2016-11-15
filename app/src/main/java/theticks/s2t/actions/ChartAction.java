@@ -1,5 +1,8 @@
 package theticks.s2t.actions;
 
+import theticks.s2t.DatabaseAccess;
+import theticks.s2t.IChart;
+
 public class ChartAction implements IAction {
     private int chartType;
 
@@ -8,7 +11,7 @@ public class ChartAction implements IAction {
     }
 
     @Override
-    public void execute() {
-
+    public IChart execute(DatabaseAccess databaseAccess) {
+        return null;
     }
 }

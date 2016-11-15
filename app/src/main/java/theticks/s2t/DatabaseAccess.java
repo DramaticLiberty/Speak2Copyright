@@ -6,7 +6,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by rpadurariu on 15.11.2016.
@@ -17,14 +19,6 @@ public class DatabaseAccess {
     private SQLiteDatabase database;
     private static DatabaseAccess instance;
 
-    // Table Names
-    private static final String TABLE_STUDIES = "studies";
-    private static final String TABLE_AUTHORS = "authors";
-    private static final String TABLE_INDUSTRIES = "industries";
-    private static final String TABLE_COUNTRIES = "countries";
-    private static final String TABLE_STUDIES_TO_AUTHORS = "studies_to_authors";
-    private static final String TABLE_STUDIES_TO_INDUSTRIES = "studies_to_industries";
-    private static final String TABLE_STUDIES_TO_COUNTRIES = "studies_to_countries";
     /**
      * Private constructor to avoid object creation from outside classes.
      *
@@ -88,23 +82,46 @@ public class DatabaseAccess {
         return list;
     }
 
-    public List<ChartPoint> getNumberOfStudiesByCountry() {
-        if (database == null) {
-            return new ArrayList<ChartPoint>();
+    public Map<String, List<String>> executeSQL(String sql){
+        Map<String, List<String>> data = new HashMap<String, List<String>>();
+        Cursor cursor = database.rawQuery(sql, null);
+        String[] columnNames = cursor.getColumnNames();
+        for(String columnName: columnNames) {
+            data.put(columnName, new ArrayList<String>());
         }
-
-        List<ChartPoint> studiesByCountry = new ArrayList<>();
-        String selectQuery =  "SELECT name as country, count(*) as nr FROM " + this.TABLE_STUDIES_TO_COUNTRIES +
-                " JOIN " + this.TABLE_COUNTRIES + " c ON country_id=c.id GROUP BY country_id;";
-        Cursor cursor = database.rawQuery(selectQuery, null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()) {
-            ChartPoint studiesCountry = new ChartPoint(cursor.getString(cursor.getColumnIndex("country")),
-                    cursor.getInt(cursor.getColumnIndex("nr")));
-            studiesByCountry.add(studiesCountry);
+            cursor.moveToNext();
+            for(int i=0; i<cursor.getColumnCount();i++) {
+                String columnName = cursor.getColumnName(i);
+                List<String> values = data.get(columnName);
+                values.add(cursor.getString(i));
+            }
             cursor.moveToNext();
         }
         cursor.close();
-        return studiesByCountry;
+        return data;
     }
+
+//    public List<ChartPoint> getNumberOfStudiesByCountry() {
+//        if (database == null) {
+//            return new ArrayList<ChartPoint>();
+//        }
+//
+//        List<ChartPoint> studiesByCountry = new ArrayList<>();
+//        String selectQuery =  "SELECT name as country, count(*) as nr FROM " + Constants.TABLE_STUDIES_TO_COUNTRIES +
+//                " JOIN " + Constants.TABLE_COUNTRIES + " c ON country_id=c.id GROUP BY country_id;";
+//        Cursor cursor = database.rawQuery(selectQuery, null);
+//        cursor.moveToFirst();
+//        while(!cursor.isAfterLast()) {
+//            ChartPoint studiesCountry = new ChartPoint(cursor.getString(cursor.getColumnIndex("country")),
+//                    cursor.getInt(cursor.getColumnIndex("nr")));
+//            studiesByCountry.add(studiesCountry);
+//            cursor.moveToNext();
+//        }
+//        cursor.close();
+//
+//        executeSQL(selectQuery);
+//        return studiesByCountry;
+//    }
 }

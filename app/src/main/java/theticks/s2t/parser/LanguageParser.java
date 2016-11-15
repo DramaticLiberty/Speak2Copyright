@@ -146,21 +146,23 @@ public class LanguageParser {
             while (tokens.size() > 0) {
                 String token = popToken(tokens);
                 if (distance(token, "studied") <= 2) {
-                    if (tokens.size() > 0)
-                        return new ListAction(/*studies from that country*/);
+                    if (tokens.size() > 0) {
+                        String where = popToken(tokens);
+                        return new ListAction(/*studies from the country in where*/);
+                    }
                     else
                         return new MapAction();
                 }
             }
         } else if (distance(action, Constants.SHOW) < 2)  {
             // Show me copyright studies grouped by {country}? -> return studies grouped by item
-            if (tokens.contains("grouped") && tokens.contains("country"))
+            if (tokens.contains("country"))
                 return new MapAction();
-            else if (tokens.contains("grouped") && tokens.contains("industry"))
+            else if (tokens.contains("industry"))
                 return new ChartAction(Constants.PIE_CHART);
-            else if (tokens.contains("grouped") && tokens.contains("year"))
+            else if (tokens.contains("year"))
                 return new ChartAction(Constants.BUBBLE_CHART);
-            else if (tokens.contains("grouped") && tokens.contains("author"))
+            else if (tokens.contains("author"))
                 return new ChartAction(Constants.PIE_CHART);
         }
         return new DefaultAction();
