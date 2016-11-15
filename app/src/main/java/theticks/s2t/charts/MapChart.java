@@ -7,30 +7,24 @@ import android.webkit.WebView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import theticks.s2t.ChartPoint;
 import theticks.s2t.R;
 
-/**
- * Created by Mihai Balint on 11/15/16.
- */
 
 public class MapChart extends SimpleTextChart {
 
     private List<ChartPoint> studiesByCountry;
+    private Map<String, List<String>> data;
 
-    public MapChart() {
+    public MapChart(Map<String, List<String>> data) {
+        this.data = data;
         this.layout_id = R.layout.fragment_map_chart;
-        studiesByCountry = new ArrayList<ChartPoint>();
     }
 
     @Override
     protected View viewSetup(View v) {
-
-        studiesByCountry = databaseAccess.getNumberOfStudiesByCountry();
-
-        this.filterCountries();
-
         WebView webView = (WebView) v.findViewById(R.id.web_view);
         webView.addJavascriptInterface(new WebAppInterface(), "Android");
         WebSettings webSettings = webView.getSettings();
@@ -40,33 +34,20 @@ public class MapChart extends SimpleTextChart {
         return v;
     }
 
-    private void filterCountries() {
-        for (int i = 0; i < studiesByCountry.size(); i++) {
-            String name = studiesByCountry.get(i).getName();
-            if (name.matches(".*\\d+.*")) {
-                studiesByCountry.remove(i);
-                i--;
-            } else if (name.contains("NOT STATED")) {
-                studiesByCountry.remove(i);
-                i--;
-            }
-        }
-    }
-
     public class WebAppInterface {
         @JavascriptInterface
         public int getNumberOfCountries() {
-            return studiesByCountry.size();
+            return data.get("country").size();
         }
 
         @JavascriptInterface
         public String getCountry(int i) {
-            return studiesByCountry.get(i).getName();
+            return data.get("country").get(i);
         }
 
         @JavascriptInterface
         public int getStudies(int i) {
-            return studiesByCountry.get(i).getValue();
+            return Integer.parseInt(data.get("number_of_studies").get(i));
         }
     }
 }

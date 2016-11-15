@@ -29,7 +29,7 @@ public class PieChart  extends SimpleTextChart {
 
     @Override
     protected View viewSetup(View v) {
-        studies = databaseAccess.getNumberOfStudiesByCountry();
+//        studies = databaseAccess.getNumberOfStudiesByCountry();
 
         chart = (PieChartView) v.findViewById(R.id.pie_chart);
         chart.setPieChartData(this.getData());
