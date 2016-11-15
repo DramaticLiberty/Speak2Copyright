@@ -51,7 +51,11 @@ public class DatabaseAccess {
      * Open the database connection.
      */
     public void open() {
-        this.database = openHelper.getReadableDatabase();
+        try {
+            this.database = openHelper.getReadableDatabase();
+        } catch(Exception e) {
+            // TODO Log exceptions and handle it in a recoverable way
+        }
     }
 
     /**
@@ -69,6 +73,10 @@ public class DatabaseAccess {
      * @return a List of studies
      */
     public List<String> getStudies() {
+        if (database == null) {
+            return new ArrayList<String>();
+        }
+
         List<String> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT name FROM studies", null);
         cursor.moveToFirst();
@@ -81,6 +89,10 @@ public class DatabaseAccess {
     }
 
     public List<StudiesByCountry> getNumberOfStudiesByCountry() {
+        if (database == null) {
+            return new ArrayList<StudiesByCountry>();
+        }
+
         List<StudiesByCountry> studiesByCountry = new ArrayList<>();
         String selectQuery =  "SELECT name as country, count(*) as nr FROM " + this.TABLE_STUDIES_TO_COUNTRIES +
                 " JOIN " + this.TABLE_COUNTRIES + " c ON country_id=c.id GROUP BY country_id;";
