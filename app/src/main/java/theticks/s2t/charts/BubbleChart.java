@@ -9,7 +9,6 @@ import java.util.Map;
 import lecho.lib.hellocharts.model.Axis;
 import lecho.lib.hellocharts.model.BubbleChartData;
 import lecho.lib.hellocharts.model.BubbleValue;
-import lecho.lib.hellocharts.model.SliceValue;
 import lecho.lib.hellocharts.util.ChartUtils;
 import lecho.lib.hellocharts.view.BubbleChartView;
 import theticks.s2t.R;
@@ -28,6 +27,7 @@ public class BubbleChart extends SimpleTextChart{
     protected View viewSetup(View v) {
         chart = (BubbleChartView) v.findViewById(R.id.bubble_chart);
         chart.setBubbleChartData(this.getData());
+        chart.setZoomEnabled(true);
         return v;
     }
 
@@ -51,6 +51,7 @@ public class BubbleChart extends SimpleTextChart{
         bubbleData.setAxisXBottom(axisX);
         bubbleData.setAxisYLeft(axisY);
         bubbleData.setValueLabelBackgroundEnabled(false);
+        bubbleData.setBubbleScale((float)0.5);
         return bubbleData;
 
     }
