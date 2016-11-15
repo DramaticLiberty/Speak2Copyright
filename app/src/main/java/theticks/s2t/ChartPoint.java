@@ -1,8 +1,5 @@
 package theticks.s2t;
 
-/**
- * Created by rpadurariu on 15.11.2016.
- */
 
 public class ChartPoint {
     private String name;

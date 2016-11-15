@@ -47,12 +47,6 @@ public class ChartsAdapter implements ListAdapter {
         notifyDataSetChanged();
     }
 
-    public void append2() {
-//        append(new MapChart());
-//        append(new PieChart());
-//        append(new SimpleTextChart());
-    }
-
     @Override
     public int getCount() {
         return charts.size();

@@ -8,9 +8,6 @@ import android.view.View;
 
 import java.util.Locale;
 
-/**
- * Created by Mihai Balint on 11/15/16.
- */
 
 public class SpeakAfterButton implements View.OnClickListener {
 

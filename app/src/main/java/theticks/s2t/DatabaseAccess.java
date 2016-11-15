@@ -10,10 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by rpadurariu on 15.11.2016.
- */
-
 public class DatabaseAccess {
     private SQLiteOpenHelper openHelper;
     private SQLiteDatabase database;
@@ -101,26 +97,4 @@ public class DatabaseAccess {
         cursor.close();
         return data;
     }
-
-//    public List<ChartPoint> getNumberOfStudiesByCountry() {
-//        if (database == null) {
-//            return new ArrayList<ChartPoint>();
-//        }
-//
-//        List<ChartPoint> studiesByCountry = new ArrayList<>();
-//        String selectQuery =  "SELECT name as country, count(*) as nr FROM " + Constants.TABLE_STUDIES_TO_COUNTRIES +
-//                " JOIN " + Constants.TABLE_COUNTRIES + " c ON country_id=c.id GROUP BY country_id;";
-//        Cursor cursor = database.rawQuery(selectQuery, null);
-//        cursor.moveToFirst();
-//        while(!cursor.isAfterLast()) {
-//            ChartPoint studiesCountry = new ChartPoint(cursor.getString(cursor.getColumnIndex("country")),
-//                    cursor.getInt(cursor.getColumnIndex("nr")));
-//            studiesByCountry.add(studiesCountry);
-//            cursor.moveToNext();
-//        }
-//        cursor.close();
-//
-//        executeSQL(selectQuery);
-//        return studiesByCountry;
-//    }
 }

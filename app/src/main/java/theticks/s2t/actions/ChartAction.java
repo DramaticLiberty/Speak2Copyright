@@ -13,12 +13,6 @@ public class ChartAction implements IAction {
     public ChartAction(int chartType) {
         sql = "SELECT name as country, count(*) as number_of_studies FROM " + Constants.TABLE_STUDIES_TO_INDUSTRIES +
                 " JOIN " + Constants.TABLE_INDUSTRIES + " i ON industry_id=i.id GROUP BY industry_id;";
-//        switch (chartType) {
-//            case Constants.GROUPED_INDUSTRIES: {
-//
-//                break;
-//            }
-//        }
     }
 
     @Override
