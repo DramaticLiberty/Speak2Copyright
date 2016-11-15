@@ -6,6 +6,7 @@
     <TextView
         android:id="@+id/sugest1"
         android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:clickable="true"
         style="@style/AppTheme.Suggestions"
         android:text="What is copyright?" />
 
@@ -13,6 +14,7 @@
         android:id="@+id/sugest2"
         android:layout_below="@id/sugest1"
         android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:clickable="true"
         style="@style/AppTheme.Suggestions"
         android:text="Studies grouped by industry" />
 
@@ -20,6 +22,7 @@
         android:id="@+id/sugest3"
         android:layout_below="@id/sugest2"
         android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:clickable="true"
         style="@style/AppTheme.Suggestions"
         android:text="Should music copyright be updated?" />
 
