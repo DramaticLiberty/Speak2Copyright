@@ -26,6 +26,9 @@ public class MapChart extends SimpleTextChart {
 
     @Override
     protected View viewSetup(View v) {
+
+        studiesByCountry = databaseAccess.getNumberOfStudiesByCountry();
+
         this.filterCountries();
 
         WebView webView = (WebView) v.findViewById(R.id.web_view);
