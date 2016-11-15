@@ -1,7 +1,18 @@
 package theticks.s2t.actions;
 
-/**
- * Created by ioana on 15/11/2016.
- */
-public class ListAction {
+public class ListAction implements IAction{
+
+    private String industry;
+
+    public ListAction() {
+
+    }
+
+    public ListAction(String industry) {
+        this.industry = industry;
+    }
+    @Override
+    public void execute() {
+
+    }
 }
