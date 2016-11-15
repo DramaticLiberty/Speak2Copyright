@@ -1,0 +1,18 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="500dp">
+
+    <TextView
+        android:id="@+id/bar_chart_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bar Chart" />
+
+    <lecho.lib.hellocharts.view.ColumnChartView
+        android:id="@+id/bar_chart"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_marginBottom="8dp"
+        android:layout_below="@id/bar_chart_title"/>
+</RelativeLayout>
