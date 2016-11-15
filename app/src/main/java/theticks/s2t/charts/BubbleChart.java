@@ -16,8 +16,6 @@ import theticks.s2t.R;
 
 
 public class BubbleChart extends SimpleTextChart{
-
-
     private BubbleChartView chart;
     private Map<String, List<String>> data;
 
