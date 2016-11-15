@@ -1,39 +1,24 @@
 package theticks.s2t;
 
 import android.annotation.SuppressLint;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.webkit.JavascriptInterface;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.widget.TextView;
+import android.widget.ListView;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 @SuppressLint("SetJavaScriptEnabled")
 public class SpeakCopy extends AppCompatActivity {
     public static final int REQ_CODE_SPEECH_INPUT = 110;
-    private TextView output_text;
-    public static final String CHARTS_PATH = "file:///android_asset/";
+    private ChartsAdapter charts;
 
-    WebView webView;
-    private List<StudiesByCountry> studiesByCountry;
+    public static final String CHARTS_PATH = "file:///android_asset/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,21 +26,17 @@ public class SpeakCopy extends AppCompatActivity {
         setContentView(R.layout.activity_speak_copy);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        output_text = (TextView) findViewById(R.id.output_text);
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
-        databaseAccess.open();
-        studiesByCountry = databaseAccess.getNumberOfStudiesByCountry();
-        this.filterCountries();
+
+        charts = new ChartsAdapter(this);
+        ListView charts = (ListView) findViewById(R.id.charts);
+        charts.setAdapter(this.charts);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-
-        webView = (WebView) findViewById(R.id.web_view);
-        webView.addJavascriptInterface(new WebAppInterface(), "Android");
-        WebSettings webSettings = webView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-        webSettings.setBuiltInZoomControls(true);
-        webView.loadUrl("file:///android_asset/studies-by-country.html");
-
         fab.setOnClickListener(new SpeakAfterButton(this));
+    }
+
+    public void append() {
+        this.charts.append2();
     }
 
     @Override
@@ -66,7 +47,7 @@ public class SpeakCopy extends AppCompatActivity {
             case REQ_CODE_SPEECH_INPUT: {
                 if (resultCode == RESULT_OK && null != data) {
                     ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                    output_text.setText(result.get(0));
+                    // output_text.setText(result.get(0));
                 }
                 break;
             }
@@ -93,38 +74,5 @@ public class SpeakCopy extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-
-    private void filterCountries() {
-        for(int i=0; i<studiesByCountry.size(); i++) {
-            String name= studiesByCountry.get(i).getCountryName();
-            if (name.matches(".*\\d+.*")) {
-                studiesByCountry.remove(i);
-                i--;
-            }
-            else if(name.contains("NOT STATED")) {
-                studiesByCountry.remove(i);
-                i--;
-            }
-        }
-    }
-
-
-    public class WebAppInterface {
-        @JavascriptInterface
-        public int getNumberOfCountries() {
-            return studiesByCountry.size();
-        }
-
-        @JavascriptInterface
-        public String getCountry(int i) {
-            return studiesByCountry.get(i).getCountryName();
-        }
-
-        @JavascriptInterface
-        public int getStudies(int i) {
-            return studiesByCountry.get(i).getNumberOfStudies();
-        }
     }
 }
