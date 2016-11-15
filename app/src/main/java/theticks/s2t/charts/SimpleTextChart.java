@@ -14,6 +14,14 @@ public class SimpleTextChart implements IChart {
     protected int layout_id = R.layout.fragment_simple_text;
     protected DatabaseAccess databaseAccess;
 
+    @Deprecated()
+    public SimpleTextChart() {
+    }
+
+    public SimpleTextChart(int layout_id) {
+        this.layout_id = layout_id;
+    }
+
     @Override
     public final void setDatabaseAccess(DatabaseAccess databaseAccess) {
         this.databaseAccess = databaseAccess;
