@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import lecho.lib.hellocharts.model.PieChartData;
 import lecho.lib.hellocharts.model.SliceValue;
@@ -14,42 +15,36 @@ import lecho.lib.hellocharts.view.PieChartView;
 import theticks.s2t.ChartPoint;
 import theticks.s2t.R;
 
-/**
- * Created by rpadurariu on 15.11.2016.
- */
 
 public class PieChart  extends SimpleTextChart {
 
     private PieChartView chart;
-    private List<ChartPoint> studies;
+    private Map<String, List<String>> data;
 
-    public PieChart() {
+    public PieChart(Map<String, List<String>> data) {
+        this.data = data;
         this.layout_id = R.layout.fragment_pie_chart;
     }
 
     @Override
     protected View viewSetup(View v) {
-//        studies = databaseAccess.getNumberOfStudiesByCountry();
-
         chart = (PieChartView) v.findViewById(R.id.pie_chart);
         chart.setPieChartData(this.getData());
         return v;
     }
 
     public PieChartData getData() {
-        PieChartData data;
         List<SliceValue> chartValues = new ArrayList<SliceValue>();
 
-        for(ChartPoint value: this.studies) {
-            SliceValue sliceValue = new SliceValue(value.getValue(), ChartUtils.pickColor());
-//            sliceValue.setLabel(value.getName() + ": " + value.getValue());
+        for (int i = 0; i < data.get("country").size(); i++) {
+            int numberOfStudies = Integer.parseInt(data.get("number_of_studies").get(i));
+            SliceValue sliceValue = new SliceValue(numberOfStudies, ChartUtils.pickColor());
+            sliceValue.setLabel(data.get("country").get(i)+":"+numberOfStudies);
             chartValues.add(sliceValue);
         }
-
-        data = new PieChartData(chartValues);
-        data.setHasLabels(true);
-        data.setHasCenterCircle(true);
-
-        return data;
+        PieChartData pieData = new PieChartData(chartValues);
+//        pieData.setHasLabels(true);
+        pieData.setHasCenterCircle(false);
+        return pieData;
     }
 }

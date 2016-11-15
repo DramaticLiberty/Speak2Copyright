@@ -159,11 +159,9 @@ public class LanguageParser {
             if (tokens.contains("country"))
                 return new MapAction();
             else if (tokens.contains("industry"))
-                return new ChartAction(Constants.PIE_CHART);
+                return new ChartAction(Constants.GROUPED_INDUSTRIES);
             else if (tokens.contains("year"))
-                return new ChartAction(Constants.BUBBLE_CHART);
-            else if (tokens.contains("author"))
-                return new ChartAction(Constants.PIE_CHART);
+                return new ChartAction(Constants.GROUPED_YEAR);
         }
         return new DefaultAction();
     }

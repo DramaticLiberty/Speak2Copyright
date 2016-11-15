@@ -91,7 +91,6 @@ public class DatabaseAccess {
         }
         cursor.moveToFirst();
         while(!cursor.isAfterLast()) {
-            cursor.moveToNext();
             for(int i=0; i<cursor.getColumnCount();i++) {
                 String columnName = cursor.getColumnName(i);
                 List<String> values = data.get(columnName);

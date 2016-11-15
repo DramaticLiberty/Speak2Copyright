@@ -8,9 +8,6 @@ import theticks.s2t.DatabaseAccess;
 import theticks.s2t.IChart;
 import theticks.s2t.R;
 
-/**
- * Created by Mihai Balint on 11/15/16.
- */
 
 public class SimpleTextChart implements IChart {
 

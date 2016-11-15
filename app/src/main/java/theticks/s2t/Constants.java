@@ -27,8 +27,8 @@ public class Constants {
 
 
     // CHART TYPES
-    public static final int PIE_CHART = 1;
-    public static final int BUBBLE_CHART = 2;
+    public static final int GROUPED_INDUSTRIES = 1;
+    public static final int GROUPED_YEAR = 2;
 
     public static final int SEARCH_DEPTH = 4;
 
