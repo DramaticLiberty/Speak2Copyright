@@ -1,8 +1,6 @@
 package theticks.s2t.charts;
 
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +10,6 @@ import lecho.lib.hellocharts.model.PieChartData;
 import lecho.lib.hellocharts.model.SliceValue;
 import lecho.lib.hellocharts.util.ChartUtils;
 import lecho.lib.hellocharts.view.PieChartView;
-import theticks.s2t.ChartPoint;
 import theticks.s2t.R;
 
 
