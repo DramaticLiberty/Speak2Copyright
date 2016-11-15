@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">Speak!</string>
+    <string name="app_name">Speak to Copyright</string>
+
+
     <string name="large_text">
         "Ask to view some information\n\n"
 

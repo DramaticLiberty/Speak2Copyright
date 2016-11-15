@@ -40,8 +40,6 @@ public class SpeakCopy extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speak_copy);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         charts = new ChartsAdapter(this);
         ListView charts = (ListView) findViewById(R.id.charts);

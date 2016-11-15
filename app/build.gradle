@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
+    android.defaultConfig.vectorDrawables.useSupportLibrary = true
     defaultConfig {
         applicationId "theticks.s2t"
         minSdkVersion 16
