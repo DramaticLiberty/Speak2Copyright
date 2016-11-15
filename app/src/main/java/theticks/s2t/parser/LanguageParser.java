@@ -126,34 +126,32 @@ public class LanguageParser {
             // What is copyright?
             if (what.equalsIgnoreCase("copyright"))
                 return new NavigateAction("https://en.wikipedia.org/wiki/Copyright");
-        } else if (distance(action, Constants.SHOULD) < 2) {
+        } else if (distance(action, Constants.SHOULD) < 2 || tokens.contains("updated")) {
             String what = popToken(tokens);
             // Should copyright be updated/abolished/etc? -> return all studies
-            if (what.equalsIgnoreCase("copyright")) return new ListAction();
+            if (what.equalsIgnoreCase("copyright")) return new ListAction(Constants.SHOULD_UPDATE, null);
             else {
                 // Should {industry} copyright be updated/abolished/etc? -> Return studies by industry
                 int depth = 1;
                 while (depth <= Constants.SEARCH_DEPTH) {
                     String industry = industryMapping(what);
                     if (industry != null)
-                        return new ListAction(industry);
+                        return new ListAction(Constants.SHOULD_UPDATE, industry);
                     what += popToken(tokens);
                     depth ++;
                 }
             }
-        } else if (distance(action, Constants.HAS) < 2) {
-            // Has copyright been studied in {country}? -> return copyright studies for that country
-            while (tokens.size() > 0) {
-                String token = popToken(tokens);
-                if (distance(token, "studied") <= 2) {
-                    if (tokens.size() > 0) {
-                        String where = popToken(tokens);
-                        return new ListAction(/*studies from the country in where*/);
-                    }
-                    else
-                        return new MapAction();
-                }
-            }
+//        } else if (distance(action, Constants.HAS) < 2 || tokens.contains("studied") || tokens.contains("started") || tokens.contains("are")) {
+//            // Are there any studies in {country}? -> return copyright studies for that country
+//            while (tokens.size() > 0) {
+//                String token = popToken(tokens);
+//                if (distance(token, "studied") <= 2 || distance(token, "studies") <= 2) {
+//                    if (tokens.size() > 0) {
+//                        String where = popToken(tokens);
+//                        return new ListAction(Constants.HAD_BEEN_STUDIED, where);
+//                    }
+//                }
+//            }
         } else if (distance(action, Constants.SHOW) < 2)  {
             // Show me copyright studies grouped by {country}? -> return studies grouped by item
             if (tokens.contains("country"))

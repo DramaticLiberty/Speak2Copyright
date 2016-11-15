@@ -40,4 +40,9 @@ public class Constants {
     public static final String TABLE_STUDIES_TO_AUTHORS = "studies_to_authors";
     public static final String TABLE_STUDIES_TO_INDUSTRIES = "studies_to_industries";
     public static final String TABLE_STUDIES_TO_COUNTRIES = "studies_to_countries";
+
+    // CHART TYPES
+    public static final int SHOULD_UPDATE = 1;
+    public static final int HAD_BEEN_STUDIED = 2;
+
 }
