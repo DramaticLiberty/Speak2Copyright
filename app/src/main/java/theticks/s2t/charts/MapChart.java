@@ -5,17 +5,13 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import theticks.s2t.ChartPoint;
 import theticks.s2t.R;
 
 
 public class MapChart extends SimpleTextChart {
-
-    private List<ChartPoint> studiesByCountry;
     private Map<String, List<String>> data;
 
     public MapChart(Map<String, List<String>> data) {
