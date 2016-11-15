@@ -76,7 +76,7 @@ public class ChartsAdapter extends BaseAdapter {
 
     @Override
     public int getViewTypeCount() {
-        return chartTypes.size();
+        return Math.max(1, chartTypes.size());
     }
 
     @Override

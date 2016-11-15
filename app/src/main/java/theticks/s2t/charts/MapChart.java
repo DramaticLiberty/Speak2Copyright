@@ -21,7 +21,7 @@ public class MapChart extends SimpleTextChart {
 
     public MapChart() {
         this.layout_id = R.layout.fragment_map_chart;
-        studiesByCountry = new ArrayList<StudiesByCountry>();
+        studiesByCountry = new ArrayList<ChartPoint>();
     }
 
     @Override
