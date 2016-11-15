@@ -118,6 +118,7 @@ public class LanguageParser {
 
     public IAction parse(String phrase) {
         phrase = phrase.toLowerCase();
+        phrase = phrase.replace("?", "");
         List<String> tokens = filter(phrase);
         if (tokens.isEmpty()) return new DefaultAction();
             String action = popToken(tokens);

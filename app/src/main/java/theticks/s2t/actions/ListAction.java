@@ -50,7 +50,7 @@ public class ListAction implements IAction{
                         Constants.TABLE_STUDIES_TO_COUNTRIES + " ON s.id=study_id JOIN " + Constants.TABLE_COUNTRIES + "c ON c.id=country_id" +
                         " WHERE c.name = upper('" + target + "') or c.name = 'WORLDWIDE' where s.title != '' and abs(s.year) != 0 order by year desc limit 3";
                 Map<String, List<String>> results = databaseAccess.executeSQL(hasBeenStudied);
-                if (results.keySet().size() <= 3)
+                if (results.keySet().size() < 3)
                     return new ListChart("No.", "There are no studies yet", null);
                 else
                     return new ListChart("Yes.", "Here are the most recent studies", results);
