@@ -32,9 +32,11 @@ public class ListChart extends SimpleTextChart{
     protected View viewSetup(View v) {
         updateElement(v, R.id.response, response);
         updateElement(v, R.id.responseDetails, responseDetails);
-        updateElement(v, R.id.firstElement, "1. " + data.get("title").get(0)+".");
-        updateElement(v, R.id.secondElement, "2. " + data.get("title").get(1)+".");
-        updateElement(v, R.id.thirdElement, "3. " + data.get("title").get(2)+".");
+        if (data != null) {
+            updateElement(v, R.id.firstElement, "1. " + data.get("title").get(0) + ".");
+            updateElement(v, R.id.secondElement, "2. " + data.get("title").get(1) + ".");
+            updateElement(v, R.id.thirdElement, "3. " + data.get("title").get(2) + ".");
+        }
         return v;
     }
 
