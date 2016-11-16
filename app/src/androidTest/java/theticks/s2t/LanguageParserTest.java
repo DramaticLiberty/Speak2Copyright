@@ -5,7 +5,6 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -16,10 +15,8 @@ import theticks.s2t.actions.DefaultAction;
 import theticks.s2t.actions.IAction;
 import theticks.s2t.actions.ListAction;
 import theticks.s2t.actions.MapAction;
-import theticks.s2t.actions.NavigateAction;
 import theticks.s2t.parser.LanguageParser;
 
-import static android.R.attr.action;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;

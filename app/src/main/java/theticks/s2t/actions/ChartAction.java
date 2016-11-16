@@ -4,8 +4,7 @@ import theticks.s2t.Constants;
 import theticks.s2t.DatabaseAccess;
 import theticks.s2t.IChart;
 import theticks.s2t.charts.BarChart;
-import theticks.s2t.charts.DefaultChart;
-import theticks.s2t.charts.MapChart;
+import theticks.s2t.charts.TextChart;
 import theticks.s2t.charts.PieChart;
 
 public class ChartAction implements IAction {
@@ -28,6 +27,6 @@ public class ChartAction implements IAction {
                         " WHERE year != '' AND ABS(year) > 2000 GROUP BY year;";
                 return new BarChart(databaseAccess.executeSQL(sql_year));
         }
-        return new DefaultChart();
+        return new TextChart(Constants.DEFAULT);
     }
 }
