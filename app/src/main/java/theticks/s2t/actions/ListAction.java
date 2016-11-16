@@ -27,7 +27,7 @@ public class ListAction implements IAction{
             case Constants.SHOULD_UPDATE:
                 if (target == null){
                     String update_copyright = "SELECT s.title AS title, s.url as url FROM " + Constants.TABLE_STUDIES + " s where s.title != '' and abs(s.year) != 0 order by year desc limit 3";
-                    return new ListChart("Probably yes.", "Here are some recent studies that show why", databaseAccess.executeSQL(update_copyright));
+                    return new ListChart("Probably yes.", "Here are some recent studies that show why:", databaseAccess.executeSQL(update_copyright));
                 }
                 else {
                     String update_industry = "SELECT s.title AS title, s.url as url FROM " + Constants.TABLE_STUDIES +
@@ -38,7 +38,7 @@ public class ListAction implements IAction{
                     if (results.keySet().size() < 3)
                         return new ListChart("Probably no.", "There are no studies on this topic", null);
                     else
-                        return new ListChart("Probably yes.", "Here are some recent studies that show why", results);
+                        return new ListChart("Probably yes.", "Here are some recent studies that show why:", results);
                 }
 
             case Constants.HAD_BEEN_STUDIED:

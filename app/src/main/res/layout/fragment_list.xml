@@ -7,9 +7,9 @@
         android:textColor="@color/colorBlueDark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
+        android:layout_marginLeft="16dp"
         android:id="@+id/response"
-        android:textSize="32sp"
+        android:textSize="18sp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -17,22 +17,26 @@
         android:text="TextView"
         android:textColor="@color/colorTextLight"
         android:visibility="invisible"
-        android:layout_toRightOf="@id/response"
+        android:paddingBottom="8dp"
+        android:layout_below="@id/response"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="24dp"
-        android:layout_alignBaseline="@id/response"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:textSize="16sp"
         android:id="@+id/responseDetails" />
+
 
     <TextView
         android:text="TextView"
         android:textColor="@color/colorTextLight"
         android:visibility="invisible"
-        android:layout_below="@id/response"
+        android:layout_below="@id/responseDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="24dp"
-        android:layout_marginLeft="24dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:textSize="16sp"
         android:id="@+id/firstElement" />
 
     <TextView
@@ -42,18 +46,21 @@
         android:layout_below="@id/firstElement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="24dp"
-        android:layout_marginLeft="24dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:textSize="16sp"
         android:id="@+id/secondElement" />
 
     <TextView
         android:text="TextView"
+        android:autoLink="web"
         android:textColor="@color/colorTextLight"
         android:visibility="invisible"
         android:layout_below="@id/secondElement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="24dp"
-        android:layout_marginLeft="24dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:textSize="16sp"
         android:id="@+id/thirdElement" />
 </RelativeLayout>
