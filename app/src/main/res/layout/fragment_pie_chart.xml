@@ -12,7 +12,7 @@
         android:id="@+id/selected_slice" style="@style/AppTheme.ChartTitle"
         android:layout_width="match_parent" android:layout_height="60sp"
         android:layout_gravity="center"
-        android:layout_below="@+id/pie_chart_titlet"
+        android:layout_below="@+id/pie_chart_title"
         />
 
     <lecho.lib.hellocharts.view.PieChartView
