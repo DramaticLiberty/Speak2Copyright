@@ -53,5 +53,5 @@ public class Constants {
     public static final int HAD_BEEN_STUDIED = 2;
 
     public static final String WHAT_IS_COPYRIGHT = "Copyright is a legal right created by the law of a country that grants the creator of an original work exclusive rights for its use and distribution. This is usually only for a limited time. The exclusive rights are not absolute but limited by limitations and exceptions to copyright law, including fair use.";
-    public static final String DEFAULT = "Sorry, I could not understand that. Please try again";
+    public static final String DEFAULT = "Sorry, I could not understand that. Please try again.";
 }

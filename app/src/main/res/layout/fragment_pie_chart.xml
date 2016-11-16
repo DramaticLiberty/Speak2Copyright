@@ -3,16 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="500dp">
 
-    <TextView
-        android:id="@+id/pie_chart_title" style="@style/AppTheme.ChartTitle"
-        android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:text="PieChart" />
 
     <TextView
         android:id="@+id/selected_slice" style="@style/AppTheme.ChartTitle"
         android:layout_width="match_parent" android:layout_height="60sp"
+        android:textSize="14sp" android:textColor="@color/colorTextLight"
         android:layout_gravity="center"
-        android:layout_below="@+id/pie_chart_title"
         />
 
     <lecho.lib.hellocharts.view.PieChartView
