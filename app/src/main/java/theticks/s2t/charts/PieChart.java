@@ -80,7 +80,6 @@ public class PieChart  extends SimpleTextChart {
     private class ValueTouchListener implements PieChartOnValueSelectListener {
 
         private SliceValue value;
-        private Integer initValue;
 
         @Override
         public void onValueSelected(int arcIndex, SliceValue value) {
@@ -89,8 +88,7 @@ public class PieChart  extends SimpleTextChart {
                 selectedSlice.setText("");
             }
             this.value = value;
-            initValue = (int)value.getValue();
-            selectedSlice.setText(name + ": " + initValue+ "%");
+            selectedSlice.setText(name);
         }
 
         @Override
