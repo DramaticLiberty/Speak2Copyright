@@ -33,7 +33,6 @@ public class ListAction implements IAction{
                     String update_industry = "SELECT s.title AS title, s.url as url FROM " + Constants.TABLE_STUDIES +
                             " s JOIN " + Constants.TABLE_STUDIES_TO_INDUSTRIES + " si ON s.id=si.study_id JOIN " + Constants.TABLE_INDUSTRIES +
                             " i on i.id=si.industry_id where i.name=upper('" + target + "') and s.title !='' and abs(s.year) != 0 order by year desc limit 3";
-                    databaseAccess.executeSQL(update_industry);
                     Map<String, List<String>> results = databaseAccess.executeSQL(update_industry);
                     if (results.keySet().size() < 3)
                         return new ListChart("Probably no.", "There are no studies on this topic", null);

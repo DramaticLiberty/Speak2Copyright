@@ -38,12 +38,6 @@ public class LanguageParserTest {
     }
 
     @Test
-    public void whatIsCopyright() throws Exception {
-        IAction action = new LanguageParser(context).parse("What is copyright");
-        assertThat(action, instanceOf(NavigateAction.class));
-    }
-
-    @Test
     public void copyrightAction() throws Exception {
         IAction action = new LanguageParser(context).parse("Should music copyright be extended");
         assertThat(action, instanceOf(ListAction.class));

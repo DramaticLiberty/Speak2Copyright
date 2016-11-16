@@ -19,9 +19,6 @@ import lecho.lib.hellocharts.view.ColumnChartView;
 import lecho.lib.hellocharts.view.LineChartView;
 import theticks.s2t.R;
 
-/**
- * Created by rpadurariu on 15.11.2016.
- */
 
 public class BarChart extends SimpleTextChart {
     private ColumnChartView chart;
