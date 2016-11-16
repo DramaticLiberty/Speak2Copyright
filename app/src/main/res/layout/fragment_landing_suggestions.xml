@@ -27,12 +27,7 @@
         android:text="Should music copyright be updated?" />
 
     <View
-        android:layout_below="@+id/sugest3"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="0dp"
-        />
+        android:layout_below="@+id/sugest3" style="@style/AppTheme.Delimiter"
+        android:layout_width="match_parent" android:layout_height="0dp" />
 
 </RelativeLayout>

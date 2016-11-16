@@ -1,5 +1,12 @@
 package theticks.s2t;
 
+import android.graphics.Color;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import lecho.lib.hellocharts.model.Line;
+
 public class Constants {
     // ACTIONS
     public static final String WHAT = "what";
