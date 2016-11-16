@@ -69,6 +69,7 @@ public class ChartsAdapter implements ListAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        System.out.println("\n*****\n* "+position+"  "+getItemViewType(position)+"\n**********\n");
         IChart c = (IChart) getItem(position);
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(context);

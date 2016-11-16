@@ -15,17 +15,17 @@ import lecho.lib.hellocharts.view.BubbleChartView;
 import theticks.s2t.R;
 
 
-public class ListChart extends SimpleTextChart{
+public class ListChart extends SimpleTextChart {
     private BubbleChartView chart;
     private String response;
     private String responseDetails;
     private Map<String, List<String>> data;
 
     public ListChart(String response, String responseDetails, Map<String, List<String>> data) {
+        super(R.layout.fragment_list);
         this.response = response;
         this.responseDetails = responseDetails;
         this.data = data;
-        this.layout_id = R.layout.fragment_list;
     }
 
     @Override
@@ -42,6 +42,10 @@ public class ListChart extends SimpleTextChart{
 
     private void updateElement(View v, int id, String text) {
         TextView element = (TextView) v.findViewById(id);
+        if (element == null) {
+            System.out.println("Ooops");
+            return;
+        }
         element.setText(text);
         element.setVisibility(View.VISIBLE);
     }
