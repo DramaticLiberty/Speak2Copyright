@@ -26,6 +26,7 @@ public class MapChart extends SimpleTextChart {
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setBuiltInZoomControls(true);
+        webSettings.setDisplayZoomControls(false);
         webView.loadUrl("file:///android_asset/studies-by-country.html");
         return v;
     }

@@ -8,10 +8,17 @@
         android:layout_width="match_parent" android:layout_height="wrap_content"
         android:text="PieChart" />
 
+    <TextView
+        android:id="@+id/selected_slice" style="@style/AppTheme.ChartTitle"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_below="@+id/pie_chart_titlet"
+        />
+
     <lecho.lib.hellocharts.view.PieChartView
         android:id="@+id/pie_chart" style="@style/AppTheme.Chart"
         android:layout_width="match_parent" android:layout_height="220dp"
-        android:layout_below="@id/pie_chart_title"/>
+        android:layout_below="@id/selected_slice"/>
 
     <View
         android:layout_below="@+id/pie_chart" style="@style/AppTheme.Delimiter"

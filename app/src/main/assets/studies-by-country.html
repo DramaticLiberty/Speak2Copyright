@@ -19,7 +19,10 @@
             ]);
         }
 
-        var options = {'title':'Studies by country new'};
+        var options = {
+            'title':'Studies by country',
+            'colors': ['#ffebee','#d50000']
+            };
 
         var chart = new google.visualization.GeoChart(document.getElementById('chart_div'));
         chart.draw(data, options);
@@ -29,6 +32,6 @@
 
 <body>
 <!--Div that will hold the pie chart-->
-<div id="chart_div"  style="width: 300px; height: 150px;"></div>
+<div id="chart_div"  style="width: 360px; height: 200px;"></div>
 </body>
 </html>
