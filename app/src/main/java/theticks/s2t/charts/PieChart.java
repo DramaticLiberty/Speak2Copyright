@@ -16,7 +16,6 @@ import lecho.lib.hellocharts.model.PieChartData;
 import lecho.lib.hellocharts.model.SliceValue;
 import lecho.lib.hellocharts.util.ChartUtils;
 import lecho.lib.hellocharts.view.PieChartView;
-import theticks.s2t.ChartPoint;
 import theticks.s2t.R;
 
 

@@ -6,12 +6,8 @@ import java.util.Map;
 import theticks.s2t.Constants;
 import theticks.s2t.DatabaseAccess;
 import theticks.s2t.IChart;
-import theticks.s2t.charts.BubbleChart;
-import theticks.s2t.charts.DefaultChart;
+import theticks.s2t.charts.TextChart;
 import theticks.s2t.charts.ListChart;
-import theticks.s2t.charts.PieChart;
-
-import static android.R.attr.name;
 
 public class ListAction implements IAction{
 
@@ -56,6 +52,6 @@ public class ListAction implements IAction{
                     return new ListChart("Yes.", "Here are the most recent studies", results);
 
         }
-        return new DefaultChart();
+        return new TextChart(Constants.DEFAULT);
     }
 }

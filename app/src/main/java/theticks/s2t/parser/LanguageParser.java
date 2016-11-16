@@ -19,6 +19,7 @@ import theticks.s2t.actions.ListAction;
 import theticks.s2t.actions.MapAction;
 import theticks.s2t.actions.NavigateAction;
 import theticks.s2t.charts.PieChart;
+import theticks.s2t.charts.TextChart;
 
 public class LanguageParser {
 
@@ -121,17 +122,17 @@ public class LanguageParser {
         phrase = phrase.toLowerCase();
         phrase = phrase.replace("?", "");
         List<String> tokens = filter(phrase);
-        if (tokens.isEmpty()) return new DefaultAction();
+        if (tokens.isEmpty()) return new DefaultAction(Constants.DEFAULT);
             String action = popToken(tokens);
         if (distance(action, Constants.WHAT) < 2) {
             String what = popToken(tokens);
             // What is copyright?
-            if (what.equalsIgnoreCase("copyright"))
-                return new NavigateAction("https://en.wikipedia.org/wiki/Copyright");
+            if (distance(what, "copyright") < 3)
+                return new DefaultAction(Constants.WHAT_IS_COPYRIGHT);
         } else if (distance(action, Constants.SHOULD) < 2 || tokens.contains("updated")) {
             String what = popToken(tokens);
             // Should copyright be updated/abolished/etc? -> return all studies
-            if (what.equalsIgnoreCase("copyright")) return new ListAction(Constants.SHOULD_UPDATE, null);
+            if (distance(what, "copyright") < 3) return new ListAction(Constants.SHOULD_UPDATE, null);
             else {
                 // Should {industry} copyright be updated/abolished/etc? -> Return studies by industry
                 int depth = 1;
@@ -163,7 +164,7 @@ public class LanguageParser {
             else if (tokens.contains("year"))
                 return new ChartAction(Constants.GROUPED_YEAR);
         }
-        return new ChartAction(Constants.GROUPED_INDUSTRIES);
+        return new DefaultAction(Constants.DEFAULT);
     }
 
 }
