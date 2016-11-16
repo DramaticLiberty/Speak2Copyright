@@ -18,6 +18,7 @@ import theticks.s2t.actions.IAction;
 import theticks.s2t.actions.ListAction;
 import theticks.s2t.actions.MapAction;
 import theticks.s2t.actions.NavigateAction;
+import theticks.s2t.charts.PieChart;
 
 public class LanguageParser {
 
@@ -162,7 +163,7 @@ public class LanguageParser {
             else if (tokens.contains("year"))
                 return new ChartAction(Constants.GROUPED_YEAR);
         }
-        return new DefaultAction();
+        return new ChartAction(Constants.GROUPED_INDUSTRIES);
     }
 
 }

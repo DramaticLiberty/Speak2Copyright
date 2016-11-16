@@ -20,8 +20,9 @@ public class ChartAction implements IAction {
     public IChart execute(DatabaseAccess databaseAccess) {
         switch (chartType) {
             case Constants.GROUPED_INDUSTRIES:
-                String sql_industries = "SELECT name as country, count(*) as number_of_studies FROM " + Constants.TABLE_STUDIES_TO_INDUSTRIES +
-                        " JOIN " + Constants.TABLE_INDUSTRIES + " i ON industry_id=i.id GROUP BY industry_id;";
+                String sql_industries = "SELECT * FROM (SELECT name as country, count(*) as number_of_studies FROM "
+                        + Constants.TABLE_STUDIES_TO_INDUSTRIES + " JOIN " + Constants.TABLE_INDUSTRIES
+                        + " i ON industry_id=i.id GROUP BY industry_id) ORDER BY number_of_studies DESC LIMIT 8;";
                 return new PieChart(databaseAccess.executeSQL(sql_industries));
             case Constants.GROUPED_YEAR:
                 String sql_year = "SELECT year as year, count(*) as number_of_studies FROM " + Constants.TABLE_STUDIES +

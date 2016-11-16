@@ -1,5 +1,12 @@
 package theticks.s2t;
 
+import android.graphics.Color;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import lecho.lib.hellocharts.model.Line;
+
 public class Constants {
     // ACTIONS
     public static final String WHAT = "what";
@@ -45,4 +52,6 @@ public class Constants {
     public static final int SHOULD_UPDATE = 1;
     public static final int HAD_BEEN_STUDIED = 2;
 
+    public List<Color> PIE_CHART_COLORS = new ArrayList<Color>();
+//    PIE_CHART_COLORS.add(Color.parseColor(""));
 }
