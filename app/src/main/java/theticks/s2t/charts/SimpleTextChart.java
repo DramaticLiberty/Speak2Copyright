@@ -31,13 +31,22 @@ public class SimpleTextChart implements IChart {
         return v;
     }
 
+    private final View safeViewSetup(View v) {
+        try {
+            return viewSetup(v);
+        } catch(Exception e) {
+            e.printStackTrace();
+            return v;
+        }
+    }
+
     @Override
     public final View createView(LayoutInflater inflater, ViewGroup parent) {
-        return viewSetup(inflater.inflate(layout_id, null));
+        return safeViewSetup(inflater.inflate(layout_id, null));
     }
 
     @Override
     public final View convertView(View convertView, ViewGroup parent) {
-        return viewSetup(convertView);
+        return safeViewSetup(convertView);
     }
 }

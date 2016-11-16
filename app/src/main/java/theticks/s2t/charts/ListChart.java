@@ -42,10 +42,6 @@ public class ListChart extends SimpleTextChart {
 
     private void updateElement(View v, int id, String text) {
         TextView element = (TextView) v.findViewById(id);
-        if (element == null) {
-            System.out.println("Ooops");
-            return;
-        }
         element.setText(text);
         element.setVisibility(View.VISIBLE);
     }
