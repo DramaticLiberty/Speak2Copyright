@@ -2,12 +2,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="wrap_content">
 
+    <LinearLayout
+        android:id="@+id/texts"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        style="@style/AppTheme.Suggestions">
     <TextView
         android:text="TextView"
         android:textColor="@color/colorBlueDark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
         android:id="@+id/response"
         android:textSize="18sp"
         android:layout_alignParentLeft="true"
@@ -15,52 +22,49 @@
 
     <TextView
         android:text="TextView"
-        android:textColor="@color/colorTextLight"
+        android:textColor="@color/colorTextDark"
         android:visibility="invisible"
         android:paddingBottom="8dp"
         android:layout_below="@id/response"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
         android:textSize="16sp"
         android:id="@+id/responseDetails" />
 
 
     <TextView
         android:text="TextView"
-        android:textColor="@color/colorTextLight"
+        android:textColor="@color/colorTextDark"
         android:visibility="invisible"
         android:layout_below="@id/responseDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
         android:textSize="16sp"
         android:id="@+id/firstElement" />
 
     <TextView
         android:text="TextView"
-        android:textColor="@color/colorTextLight"
+        android:textColor="@color/colorTextDark"
         android:visibility="invisible"
         android:layout_below="@id/firstElement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
         android:textSize="16sp"
         android:id="@+id/secondElement" />
 
     <TextView
         android:text="TextView"
         android:autoLink="web"
-        android:textColor="@color/colorTextLight"
+        android:textColor="@color/colorTextDark"
         android:visibility="invisible"
         android:layout_below="@id/secondElement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
         android:textSize="16sp"
         android:id="@+id/thirdElement" />
+    </LinearLayout>
+
+    <View
+        android:layout_below="@+id/texts" style="@style/AppTheme.Delimiter"
+        android:layout_width="match_parent" android:layout_height="0dp" />
 </RelativeLayout>
