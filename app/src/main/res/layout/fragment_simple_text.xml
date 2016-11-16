@@ -4,9 +4,13 @@
     android:layout_height="wrap_content">
 
     <TextView
+        android:id="@+id/simple_text" style="@style/AppTheme.Suggestions"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:id="@+id/simple_text"
-        android:layout_margin="@dimen/text_margin"
         android:text="@string/large_text" />
+
+    <View
+        android:layout_below="@+id/simple_text" style="@style/AppTheme.Delimiter"
+        android:layout_width="match_parent" android:layout_height="0dp" />
+
 
 </RelativeLayout>

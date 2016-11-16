@@ -4,9 +4,8 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/default_text"
+        android:id="@+id/default_text" style="@style/AppTheme.Suggestions"
         android:layout_width="match_parent" android:layout_height="wrap_content"
-        style="@style/AppTheme.Suggestions"
         android:text="@string/default_text" />
 
     <View
