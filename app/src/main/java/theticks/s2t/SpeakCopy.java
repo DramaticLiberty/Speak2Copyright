@@ -27,6 +27,7 @@ import theticks.s2t.parser.LanguageParser;
 public class SpeakCopy extends AppCompatActivity {
     public static final int REQ_CODE_SPEECH_INPUT = 110;
     private ChartsAdapter charts;
+    private ListView chartsView;
 
     public static final String CHARTS_PATH = "file:///android_asset/";
     /**
@@ -43,8 +44,8 @@ public class SpeakCopy extends AppCompatActivity {
         setContentView(R.layout.activity_speak_copy);
 
         charts = new ChartsAdapter(this);
-        ListView charts = (ListView) findViewById(R.id.charts);
-        charts.setAdapter(this.charts);
+        chartsView = (ListView) findViewById(R.id.charts);
+        chartsView.setAdapter(this.charts);
         append(new SimpleTextChart(R.layout.fragment_landing_top));
         append(new LandingSuggestions(this));
 
@@ -60,12 +61,16 @@ public class SpeakCopy extends AppCompatActivity {
 
     public void append(IChart chart) {
         this.charts.append(chart);
+        chartsView.post(new Runnable(){
+            public void run() {
+                chartsView.setSelection(chartsView.getCount() - 1);
+            }});
     }
 
     public void processQuery(String query) {
         IAction action = languageParser.parse(query);
         IChart chart = action.execute(databaseAccess);
-        charts.append(chart);
+        append(chart);
     }
 
     @Override
