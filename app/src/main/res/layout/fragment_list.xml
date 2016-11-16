@@ -53,6 +53,7 @@
 
     <TextView
         android:text="TextView"
+        android:autoLink="web"
         android:textColor="@color/colorTextLight"
         android:visibility="invisible"
         android:layout_below="@id/secondElement"
